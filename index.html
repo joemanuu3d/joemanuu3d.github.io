@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover my portfolio featuring my immersive 3D experiences, skills, education, and professional experience.">
+    <meta name="keywords" content="Programmer, Tidal Cycles, Creative Coding, Music, Portfolio, Projects, Skills, Education, Work Experience">
+    <meta name="author" content="Joe-Manuel Schlüter">
+    <title>Joe-Manuel Schlüter - Portfolio</title>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/186352723?s=400&u=5102b1accc0d50bd13f13a99f9daeb73d00662e8&v=4" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0f0f0f; /* Very dark gray */
+            --secondary-color: #00ffcc; /* Neon cyan */
+            --background-color: #1a1a1a; /* Dark gray */
+            --text-color: #ffffff; /* White text color */
+            --link-color: #00ffcc; /* Neon cyan for links */
+            --hover-color: #00e6b8; /* Slightly darker cyan for hover */
+            --card-shadow: 0 4px 8px rgba(0, 255, 204, 0.1);
+            --card-hover-shadow: 0 8px 16px rgba(0, 255, 204, 0.2);
+            --font-size-body: 18px;
+            --font-size-heading: 24px;
+            --font-size-subheading: 20px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: var(--font-size-body);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        .sidebar {
+            background: var(--primary-color);
+            color: var(--text-color);
+            width: 250px;
+            flex-shrink: 0;
+            height: 100vh;
+            overflow-y: auto;
+            position: fixed;
+            transition: transform 0.3s ease-in-out;
+            box-shadow: 2px 0 5px rgba(0, 255, 204, 0.1);
+            z-index: 1000;
+        }
+
+        .sidebar h2 {
+            font-size: 1.8rem;
+            margin: 0;
+            padding: 20px;
+            text-align: left;
+            color: var(--primary-color);
+            background-color: var(--secondary-color);
+            border-bottom: 1px solid rgba(0, 255, 204, 0.2);
+        }
+
+        .avatar-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 250px;
+            background: var(--primary-color);
+            border-bottom: 1px solid rgba(0, 255, 204, 0.2);
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid var(--text-color);
+            box-shadow: 0 4px 8px rgba(0, 255, 204, 0.2);
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin: 0;
+        }
+
+        .sidebar ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1rem;
+            display: block;
+            padding: 20px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .toggle-menu {
+            display: none;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            border: none;
+            padding: 10px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 1001;
+            width: 50px;
+            height: 50px;
+        }
+
+        main {
+            margin-left: 250px;
+            padding: 40px;
+            flex: 1;
+            width: calc(100% - 250px);
+            max-width: 100%;
+            transition: margin-left 0.3s ease;
+            background: var(--background-color);
+            color: var(--text-color);
+        }
+
+        section {
+            margin-bottom: 40px;
+            background: var(--background-color);
+            padding: 30px;
+        }
+
+        section h2 {
+            font-size: var(--font-size-heading);
+            margin-bottom: 20px;
+            border-bottom: 3px solid var(--secondary-color);
+            padding-bottom: 5px;
+        }
+
+        .music-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .music {
+            padding: 20px;
+            border: 1px solid #333;
+            border-radius: 8px;
+            background: var(--primary-color);
+            text-align: left;
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .music:hover {
+            box-shadow: var(--card-hover-shadow);
+        }
+
+        .music h3 {
+            font-size: var(--font-size-subheading);
+            margin-bottom: 10px;
+        }
+
+        .music p {
+            flex-grow: 1;
+            margin-bottom: 15px;
+        }
+
+        .music a {
+            display: inline-block;
+            margin: 0 10px 10px 0;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            width: 150px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            font-weight: bold;
+            align-self: flex-start;
+        }
+
+        .music a:hover {
+            background-color: var(--hover-color);
+            color: var(--primary-color);
+            box-shadow: 0 4px 8px rgba(0, 255, 204, 0.2);
+        }
+
+        .contact-links a {
+            display: inline-block;
+            margin: 0 10px 10px 0;
+            color: var(--text-color);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 1.5rem;
+        }
+
+        .contact-links a:hover {
+            background-color: var(--hover-color);
+        }
+
+        .contact-links a.email {
+            background-color: #D44638;
+            color: #FFFFFF;
+        }
+
+        .contact-links a.instagram {
+            background-color: #C13584;
+            color: #FFFFFF;
+        }
+
+        .contact-links a.twitter {
+            background-color: #1DA1F2;
+            color: #FFFFFF;
+        }
+        
+        .contact-links a.soundcloud {
+            background-color: #ff8800;
+            color: white;
+        }
+        
+        .contact-links a.github {
+            background-color: #333;
+            color: #FFFFFF;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin: 0;
+        }
+
+        .education-list,
+        .work-list,
+        .skills-list {
+            padding-left: 20px;
+        }
+
+        .education-list li,
+        .work-list li {
+            margin-bottom: 20px;
+            border-left: 3px solid var(--secondary-color);
+            padding-left: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .skills-list li {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .skills-list li i {
+            color: var(--secondary-color);
+            margin-right: 10px; /* Increased margin to create more space between icon and text */
+            font-size: 1.5rem;
+            width: 40px;
+            text-align: center;
+        }
+
+        .skills-list li span {
+            display: block;
+            padding-left: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-links {
+            margin-top: 20px;
+        }
+
+        .footer-container {
+            width: calc(100% - 250px);
+            margin-left: 250px;
+            max-width: 100%;
+        }
+
+        @media (max-width: 1024px) {
+            .toggle-menu {
+                display: block;
+            }
+
+            .sidebar {
+                transform: translateX(-250px);
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 100%;
+                z-index: 999;
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            main {
+                margin-left: 0;
+                padding: 20px;
+                width: 100%;
+            }
+
+            .music-list {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                width: 100%;
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <button class="toggle-menu" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+    </button>
+    <aside class="sidebar">
+        <div class="avatar-container">
+            <img src="https://avatars.githubusercontent.com/u/186352723?s=400&u=5102b1accc0d50bd13f13a99f9daeb73d00662e8&v=4" alt="Joe-Manuel Schlüter's GitHub Avatar" class="avatar">
+        </div>
+        <h2>My Portfolio</h2>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#music">Music</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </aside>
+
+    <main>
+        <section id="about">
+            <h2>About Me</h2>
+            <p>Hi, I'm Joe-Manuel Schlüter, a creative coder passionate about programming sound and music with Tidal Cycles. My work involves blending programming and music to create dynamic, generative compositions.</p>
+        </section>
+
+        <section id="music">
+            <h2>Music</h2>
+            <div class="music-list">
+                <div class="music">
+                    <h3>My Music Collection</h3>
+                    <p>Here is my collection of music created using Tidal Cycles. I blend various musical styles to create unique compositions. Listen to my work on SoundCloud.</p>
+                    <a href="https://soundcloud.com/joemanuu3d" target="_blank" class="music-link">Listen</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>Skills</h2>
+            <ul class="skills-list">
+                <li><i class="fas fa-laptop-code"></i><span><strong>Creative Coding</strong></span></li>
+                <li><i class="fas fa-code"></i><span><strong>Tidal Cycles</strong></span></li>
+                <li><i class="fas fa-wave-square"></i><span><strong>Generative Music</strong></span></li>
+                <li><i class="fas fa-play-circle"></i><span><strong>Music Composition</strong></span></li>
+                <li><i class="fas fa-headphones"></i><span><strong>Sound Design</strong></span></li>
+                <li><i class="fas fa-microchip"></i><span><strong>Audio Programming</strong></span></li>
+                <li><i class="fas fa-bug"></i><span><strong>Debugging and Problem-Solving</strong></span></li>
+            </ul>
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+            <ul class="education-list">
+                <li>
+                    <span><strong>Berufsbildende Schulen Rinteln</strong></span>
+                    <span>Electrical Engineering</span>
+                    <span>Aug 2014 - Mar 2017</span>
+                </li>
+                <li>
+                    <span><strong>Stadtschule Rodenberg</strong></span>
+                    <span>High School Diploma</span>
+                    <span>Aug 2007 - Jul 2014</span>
+                </li>
+            </ul>
+        </section>
+
+        <section id="work">
+            <h2>Work Experience</h2>
+            <ul class="work-list">
+                <li>
+                    <span><strong>Career Break</strong></span>
+                    <span>Mental Health</span>
+                    <span>Mar 2020 - Today</span>
+                </li>
+                <li>
+                    <span><strong>Postman</strong></span>
+                    <span>Deutsche Post AG</span>
+                    <span>Dec 2019 - Jan 2020</span>
+                </li>
+                <li>
+                    <span><strong>Furniture Mover</strong></span>
+                    <span>Möbel Heinrich GmbH & Co. KG</span>
+                    <span>Jan 2019 - Feb 2019</span>
+                </li>
+                <li>
+                    <span><strong>Temporary Worker</strong></span>
+                    <span>ZAG Zeitarbeits-Gesellschaft GmbH</span>
+                    <span>Nov 2018 - Nov 2018</span>
+                </li>
+                <li>
+                    <span><strong>Electronics Technician</strong></span>
+                    <span>Liebeck Blitzschutzbau GmbH</span>
+                    <span>Jun 2018 - Jun 2018</span>
+                </li>
+                <li>
+                    <span><strong>Salesperson</strong></span>
+                    <span>Senioren- Und Pflegezentrum Haus Gehrden GmbH</span>
+                    <span>Aug 2017 - Sep 2017</span>
+                </li>
+                <li>
+                    <span><strong>Temporary Worker</strong></span>
+                    <span>Unique Personalservice GmbH</span>
+                    <span>Apr 2017 - Jul 2017</span>
+                </li>
+                <li>
+                    <span><strong>Electronics Technician</strong></span>
+                    <span>Elektro-Konerding GmbH</span>
+                    <span>Aug 2014 - Mar 2017</span>
+                </li>
+            </ul>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>If you'd like to get in touch, feel free to reach out to me.</p>
+            <div class="contact-links">
+                <a href="mailto:joemanuu3d@yahoo.com" class="email"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.instagram.com/joemanuu3d/" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://x.com/joemanuu3d" target="_blank" class="twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://soundcloud.com/joemanuu3d" target="_blank" class="soundcloud"><i class="fab fa-soundcloud"></i></a>
+                <a href="https://github.com/joemanuu3d" target="_blank" class="github"><i class="fab fa-github"></i></a>
+            </div>
+        </section>
+
+    </main>
+
+    <div class="footer-container">
+        <footer>
+            <p>&copy; 2024 Joe-Manuel Schlüter</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const sidebar = document.querySelector('.sidebar');
+            const toggleButton = document.querySelector('.toggle-menu i');
+            sidebar.classList.toggle('open');
+            if (sidebar.classList.contains('open')) {
+                toggleButton.classList.remove('fa-bars');
+                toggleButton.classList.add('fa-times');
+            } else {
+                toggleButton.classList.remove('fa-times');
+                toggleButton.classList.add('fa-bars');
+            }
+        }
+    </script>
+</body>
+</html>
