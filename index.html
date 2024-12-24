@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Discover my portfolio featuring my immersive 3D experiences, skills, education, and professional experience.">
-    <meta name="keywords" content="Programmer, Tidal Cycles, Creative Coding, Music, Portfolio, Projects, Skills, Education, Work Experience">
+    <meta name="description" content="Discover my portfolio showcasing my Flutter development skills, projects, education, and professional experience.">
+    <meta name="keywords" content="Flutter Developer, Mobile App Development, Dart, Portfolio, Projects, Skills, Education, Work Experience">
     <meta name="author" content="Joe-Manuel Schlüter">
-    <title>Joe-Manuel Schlüter - Portfolio</title>
+    <title>Joe-Manuel Schlüter - Flutter Developer Portfolio</title>
     <link rel="icon" href="https://avatars.githubusercontent.com/u/186352723?s=400&u=5102b1accc0d50bd13f13a99f9daeb73d00662e8&v=4" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -147,19 +147,19 @@
             padding-bottom: 5px;
         }
 
-        .music-list {
+        .project-list {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
         }
 
-        .music {
+        .project {
             padding: 20px;
             border: 1px solid #333;
             border-radius: 8px;
             background: var(--primary-color);
             text-align: left;
-            color: var(--text-color);
+            color: var (--text-color);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -167,21 +167,21 @@
             transition: box-shadow 0.3s ease;
         }
 
-        .music:hover {
+        .project:hover {
             box-shadow: var(--card-hover-shadow);
         }
 
-        .music h3 {
+        .project h3 {
             font-size: var(--font-size-subheading);
             margin-bottom: 10px;
         }
 
-        .music p {
+        .project p {
             flex-grow: 1;
             margin-bottom: 15px;
         }
 
-        .music a {
+        .project a {
             display: inline-block;
             margin: 0 10px 10px 0;
             background-color: var(--secondary-color);
@@ -197,7 +197,7 @@
             align-self: flex-start;
         }
 
-        .music a:hover {
+        .project a:hover {
             background-color: var(--hover-color);
             color: var(--primary-color);
             box-shadow: 0 4px 8px rgba(0, 255, 204, 0.2);
@@ -235,12 +235,7 @@
             background-color: #1DA1F2;
             color: #FFFFFF;
         }
-        
-        .contact-links a.soundcloud {
-            background-color: #ff8800;
-            color: white;
-        }
-        
+
         .contact-links a.github {
             background-color: #333;
             color: #FFFFFF;
@@ -332,7 +327,7 @@
                 width: 100%;
             }
 
-            .music-list {
+            .project-list {
                 grid-template-columns: 1fr;
             }
 
@@ -355,7 +350,7 @@
         <h2>My Portfolio</h2>
         <ul>
             <li><a href="#about">About</a></li>
-            <li><a href="#music">Music</a></li>
+            <li><a href="#projects">Projects</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#education">Education</a></li>
             <li><a href="#work">Work</a></li>
@@ -366,37 +361,43 @@
     <main>
         <section id="about">
             <h2>About Me</h2>
-            <p>Hi, I'm Joe-Manuel Schlüter, a creative coder passionate about programming sound and music with Tidal Cycles. My work involves blending programming and music to create dynamic, generative compositions.</p>
+            <p>Hi, I'm Joe-Manuel Schlüter, a passionate Flutter developer. I specialize in creating beautiful and functional mobile applications using Flutter and Dart. With a strong foundation in mobile app development, I aim to build seamless and user-friendly applications.</p>
         </section>
 
-        <section id="music">
-            <h2>Music</h2>
-            <div class="music-list">
-                <div class="music">
-                    <h3>My Music</h3>
-                    <p>Here is my collection of music created using Tidal Cycles. I blend various musical styles to create unique compositions. Listen to my work on SoundCloud.</p>
-                    <a href="https://soundcloud.com/joemanuu3d" target="_blank" class="music-link">Listen</a>
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="project-list">
+                <div class="project">
+                    <h3>Project Name</h3>
+                    <p>Description of the project, highlighting the use of Flutter and any key features or functionalities implemented.</p>
+                    <a href="#" class="project-link">View Project</a>
                 </div>
+                <!-- Add more projects as needed -->
             </div>
         </section>
 
         <section id="skills">
             <h2>Skills</h2>
             <ul class="skills-list">
-                <li><i class="fas fa-music"></i><span><strong>Programming Music</strong></span></li>
-                <li><i class="fas fa-code"></i><span><strong>Tidal Cycles</strong></span></li>
-                <li><i class="fas fa-wave-square"></i><span><strong>Generative Music</strong></span></li>
-                <li><i class="fas fa-play-circle"></i><span><strong>Music Composition</strong></span></li>
-                <li><i class="fas fa-headphones"></i><span><strong>Sound Design</strong></span></li>
-                <li><i class="fas fa-microchip"></i><span><strong>Audio Programming</strong></span></li>
-                <li><i class="fas fa-laptop-code"></i><span><strong>Creative Coding</strong></span></li>
+                <li><i class="fas fa-mobile-alt"></i><span><strong>Flutter Development</strong></span></li>
+                <li><i class="fas fa-code"></i><span><strong>Dart Programming</strong></span></li>
+                <li><i class="fas fa-paint-brush"></i><span><strong>UI/UX Design</strong></span></li>
+                <li><i class="fas fa-database"></i><span><strong>Firebase Integration</strong></span></li>
                 <li><i class="fas fa-bug"></i><span><strong>Debugging and Problem-Solving</strong></span></li>
+                <li><i class="fas fa-tools"></i><span><strong>Version Control with Git</strong></span></li>
+                <li><i class="fas fa-cloud"></i><span><strong>API Integration</strong></span></li>
+                <li><i class="fas fa-desktop"></i><span><strong>Responsive Design</strong></span></li>
             </ul>
         </section>
 
         <section id="education">
             <h2>Education</h2>
             <ul class="education-list">
+                <li>
+                    <span><strong>Academind</strong></span>
+                    <span>Flutter Development Course</span>
+                    <span>Year</span>
+                </li>
                 <li>
                     <span><strong>Berufsbildende Schulen Rinteln</strong></span>
                     <span>Electrical Engineering</span>
@@ -463,7 +464,6 @@
                 <a href="mailto:joemanuu3d@yahoo.com" class="email"><i class="fas fa-envelope"></i></a>
                 <a href="https://www.instagram.com/joemanuu3d/" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
                 <a href="https://x.com/joemanuu3d" target="_blank" class="twitter"><i class="fab fa-twitter"></i></a>
-                <a href="https://soundcloud.com/joemanuu3d" target="_blank" class="soundcloud"><i class="fab fa-soundcloud"></i></a>
                 <a href="https://github.com/joemanuu3d" target="_blank" class="github"><i class="fab fa-github"></i></a>
             </div>
         </section>
